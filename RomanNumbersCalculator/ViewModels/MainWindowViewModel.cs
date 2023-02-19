@@ -9,7 +9,7 @@ namespace RomanNumbersCalculator.ViewModels
     public class MainWindowViewModel : ViewModelBase
     {
         private string currentOperationStringRepresentation = "";
-        private object currentResult;
+        private object? currentResult;
         private string currentNumberStringRepresentation = "";
         private Stack<RomanNumberExtend> stackRomanNumbers =
             new Stack<RomanNumberExtend>();
@@ -104,15 +104,12 @@ namespace RomanNumbersCalculator.ViewModels
             });
         }
 
-        private void DoOperation(
-            Func<RomanNumberExtend, RomanNumberExtend, RomanNumberExtend> operation,
-            string operationString)
+        private void DoOperation(Func<RomanNumberExtend, RomanNumberExtend, RomanNumberExtend> operation, string operationString)
         {
             if (currentNumberStringRepresentation == "#ERROR")
                 return;
 
-            if (currentNumberStringRepresentation == "" &&
-                currentOperationStringRepresentation != "")
+            if (currentNumberStringRepresentation == "" && currentOperationStringRepresentation != "")
             {
                 currentOperationStringRepresentation = operationString;
                 return;
@@ -134,18 +131,23 @@ namespace RomanNumbersCalculator.ViewModels
                     if (currentOperationStringRepresentation == "")
                     {
                         currentOperationStringRepresentation = operationString;
-                        currentResult =
-                            new RomanNumberExtend(currentNumberStringRepresentation);
+                        currentResult = new RomanNumberExtend(currentNumberStringRepresentation);
                         stackRomanNumbers.Push((RomanNumberExtend)currentResult);
                         CurrentNumberStringRepresentation = "";
                     }
                     else
                     {
-                        RomanNumberExtend newNumber =
-                            new RomanNumberExtend(currentNumberStringRepresentation);
-                        currentResult = operation(
-                            (RomanNumberExtend)(currentResult ?? stackRomanNumbers.Pop()),
-                            newNumber);
+                        RomanNumberExtend newNumber = new RomanNumberExtend(currentNumberStringRepresentation);
+                        stackRomanNumbers.Push(newNumber);
+
+                        while (stackRomanNumbers.Count > 1)
+                        {
+                            var number1 = stackRomanNumbers.Pop();
+                            var number2 = stackRomanNumbers.Pop();
+                            currentResult = operation(number1, number2);
+                            stackRomanNumbers.Push((RomanNumberExtend)currentResult);
+                        }
+
                         currentOperationStringRepresentation = operationString;
                         CurrentNumberStringRepresentation = "";
                     }
@@ -156,6 +158,7 @@ namespace RomanNumbersCalculator.ViewModels
                 CurrentNumberStringRepresentation = ex.Message;
             }
         }
+
 
         private RomanNumberExtend PerformAddition(RomanNumberExtend a,
                                                   RomanNumberExtend b)
