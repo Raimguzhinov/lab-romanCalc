@@ -389,5 +389,39 @@ namespace UITestsForRomanNumbersCalculator
             CE.Command.Execute(CE.CommandParameter);
             Assert.True(text == "VI", "result != VI");
         }
+
+        [Fact]
+        public async void Test15()
+        {
+            var app = AvaloniaApp.GetApp();
+            var mainWindow = AvaloniaApp.GetMainWindow();
+
+            await Task.Delay(100);
+
+            var result = mainWindow.GetVisualDescendants().OfType<TextBlock>().First(t => t.Name == "textResult");
+            var L = mainWindow.GetVisualDescendants().OfType<Button>().First(b => b.Name == "L");
+            var Plus = mainWindow.GetVisualDescendants().OfType<Button>().First(b => b.Name == "Plus");
+            var Sub = mainWindow.GetVisualDescendants().OfType<Button>().First(b => b.Name == "Sub");
+            var V = mainWindow.GetVisualDescendants().OfType<Button>().First(b => b.Name == "V");
+            var X = mainWindow.GetVisualDescendants().OfType<Button>().First(b => b.Name == "X");
+            var C = mainWindow.GetVisualDescendants().OfType<Button>().First(b => b.Name == "C");
+            var Result = mainWindow.GetVisualDescendants().OfType<Button>().First(b => b.Name == "Result");
+            var CE = mainWindow.GetVisualDescendants().OfType<Button>().First(b => b.Name == "CE");
+
+            L.Command.Execute(L.CommandParameter);
+            Plus.Command.Execute(Plus.CommandParameter);
+            V.Command.Execute(V.CommandParameter);
+            Plus.Command.Execute(Plus.CommandParameter);
+            C.Command.Execute(C.CommandParameter);
+            Result.Command.Execute(Result.CommandParameter);
+            Sub.Command.Execute(Sub.CommandParameter);
+            X.Command.Execute(X.CommandParameter);
+            Result.Command.Execute(Result.CommandParameter);
+
+            await Task.Delay(50);
+            string text = result.Text;
+            CE.Command.Execute(CE.CommandParameter);
+            Assert.True(text == "CXLV", "result != CXLV");
+        }
     }
 }
