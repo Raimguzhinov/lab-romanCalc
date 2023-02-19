@@ -19,9 +19,13 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
+    <PackageReference Include="Avalonia.Headless" Version="0.10.18" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\RomanNumbersCalculator\RomanNumbersCalculator.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Avalonia.Headless" />
   </ItemGroup>
 </Project>

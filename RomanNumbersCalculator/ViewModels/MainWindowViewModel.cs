@@ -9,7 +9,7 @@ namespace RomanNumbersCalculator.ViewModels
     public class MainWindowViewModel : ViewModelBase
     {
         private string currentOperationStringRepresentation = "";
-        private object? currentResult;
+        private object currentResult;
         private string currentNumberStringRepresentation = "";
         private Stack<RomanNumberExtend> stackRomanNumbers =
             new Stack<RomanNumberExtend>();

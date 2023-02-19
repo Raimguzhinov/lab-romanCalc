@@ -55,7 +55,7 @@ namespace RomanNumbersCalculator.Models
             }
             if (number != new RomanNumber(this.number).ToString())
                 throw new RomanNumberException("#ERROR");
-            if (!(this.number > 0 && this.number < 4000))
+            if (!(this.number > 0 || this.number < 4000))
                 throw new RomanNumberException("#ERROR");
         }
 
