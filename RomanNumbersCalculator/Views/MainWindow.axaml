@@ -3,7 +3,7 @@
         xmlns:vm="using:RomanNumbersCalculator.ViewModels"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450" Width="300" Height="450"
         x:Class="RomanNumbersCalculator.Views.MainWindow"
         Icon="/Assets/avalonia-logo.ico"
         Title="RomanNumbersCalculator">
@@ -13,6 +13,61 @@
              to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
         <vm:MainWindowViewModel/>
     </Design.DataContext>
+
+    <Window.Styles>
+		<Style Selector="Button.h1">
+			<Setter Property="VerticalAlignment" Value="Stretch"/>
+			<Setter Property="HorizontalAlignment" Value="Stretch"/>
+			<Setter Property="VerticalContentAlignment" Value="Center"/>
+			<Setter Property="HorizontalContentAlignment" Value="Center"/>
+			<Setter Property="CornerRadius" Value="5"/>
+			<Setter Property="FontSize" Value="24"/>
+			<Setter Property="Background" Value="White"/>
+			<Setter Property="BorderThickness" Value="2"/>
+			<Setter Property="BorderBrush" Value="Gray"/>
+		</Style>
+    </Window.Styles>
+
+	
+    <Grid ColumnDefinitions="*, *, *, *" RowDefinitions="*, *, *, *, *" Margin="10">
+        <Border Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" 
+        HorizontalAlignment="Stretch" VerticalAlignment="Stretch" BorderThickness="2" BorderBrush="Gray" CornerRadius="5" Padding="10">
+                <TextBlock Text="{Binding CurrentNumberStringRepresentation}" 
+                        HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
+                        FontSize="40" Padding="10"/>
+        </Border>
+        <Button Name="I" Content="I" Classes="h1" Grid.Row="1" Grid.Column="0" Command="{Binding AddNumber}" CommandParameter="I"
+                HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontSize="25">I</Button>
+        <Button Name="C" Content="C" Classes="h1" Grid.Row="1" Grid.Column="1" Command="{Binding AddNumber}" CommandParameter="C"
+                HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontSize="25">C</Button>
+        <Button Name="Plus" Content="+" Classes="h1" Grid.Row="1" Grid.Column="2" Command="{Binding PlusCommand}"
+                HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontSize="23">+</Button>
+        
+        <Button Name="V" Content="V" Classes="h1" Grid.Row="2" Grid.Column="0" Command="{Binding AddNumber}" CommandParameter="V"
+                HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontSize="25">V</Button>
+        <Button Name="D" Content="D" Classes="h1" Grid.Row="2" Grid.Column="1" Command="{Binding AddNumber}" CommandParameter="D"
+                HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontSize="25">D</Button>
+        <Button Name="Sub" Content="-" Classes="h1" Grid.Row="2" Grid.Column="2" Command="{Binding SubCommand}"
+                HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontSize="25">-</Button>
+        
+        <Button Name="X" Content="X" Classes="h1" Grid.Row="3" Grid.Column="0" Command="{Binding AddNumber}" CommandParameter="X"
+                HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontSize="25">X</Button>
+        <Button Name="M" Content="M" Classes="h1" Grid.Row="3" Grid.Column="1" Command="{Binding AddNumber}" CommandParameter="M"
+                HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontSize="25">M</Button>
+        <Button Name="Mul" Content="*" Classes="h1" Grid.Row="3" Grid.Column="2" Command="{Binding MulCommand}"
+                HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontSize="25">*</Button>
+
+        <Button Name="L" Content="L" Classes="h1" Grid.Row="4" Grid.Column="0" Command="{Binding AddNumber}" CommandParameter="L"
+                HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontSize="25">L</Button>
+        <Button Name="CE" Content="CE" Classes="h1" Grid.Row="4" Grid.Column="1" Command="{Binding ResetCommand}"
+                HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontSize="25">CE</Button>
+        <Button Name="Div" Content="/" Classes="h1" Grid.Row="4" Grid.Column="2" Command="{Binding DivCommand}"
+                HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontSize="25">/</Button>
+      
+        <Button Name="Result" Content="=" Classes="h1" Grid.Row="1" Grid.Column="3" Grid.RowSpan="4" 
+                HorizontalAlignment="Stretch" Command="{Binding CalculateCommand}" VerticalAlignment="Stretch" FontSize="25">=</Button>
+    </Grid>
+    
 
 </Window>
 
