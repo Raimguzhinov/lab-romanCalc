@@ -5,6 +5,8 @@ VisualStudioVersion = 25.0.1704.4
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RomanNumbersCalculator", "RomanNumbersCalculator\RomanNumbersCalculator.csproj", "{62BE1E7F-D466-453B-A720-19B3686C9D36}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UITestsForRomanNumbersCalculator", "UITestsForRomanNumbersCalculator\UITestsForRomanNumbersCalculator.csproj", "{35BB96D5-3CF3-42DB-89B3-46E039FE773B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{62BE1E7F-D466-453B-A720-19B3686C9D36}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{62BE1E7F-D466-453B-A720-19B3686C9D36}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{62BE1E7F-D466-453B-A720-19B3686C9D36}.Release|Any CPU.Build.0 = Release|Any CPU
+		{35BB96D5-3CF3-42DB-89B3-46E039FE773B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35BB96D5-3CF3-42DB-89B3-46E039FE773B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35BB96D5-3CF3-42DB-89B3-46E039FE773B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35BB96D5-3CF3-42DB-89B3-46E039FE773B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
